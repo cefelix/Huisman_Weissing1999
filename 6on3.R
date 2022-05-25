@@ -1,4 +1,4 @@
-#test
+#initializing required packages
 
 rm(list=ls())
 library("deSolve")
