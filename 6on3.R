@@ -207,52 +207,60 @@ outHW.comp.i_on_j <- rbind(outHW.comp.i_on_j[1:5000,],
                            )
 )
 
-####plot creation####
+####3.0 plot creation####
 #shortcut to get data
 outHW.comp.i_on_j <- read.csv("./output6on3.csv")
 
 
-#plot the abundances of the plankton species over time
+####3.1 abundances of the plankton species over time (fig. 1c)####
+par(mfrow=c(1,1))
 cex=1.8
 plot(outHW.comp.i_on_j$time, outHW.comp.i_on_j$N1, type="l", col="red",
      xlab="time (days)", ylab="species abundance", xlim =c(0, 15000),
      cex.lab = cex, cex.axis=cex)
 lines(outHW.comp.i_on_j$time, outHW.comp.i_on_j$N2, col="darkgreen")
-lines(outHW.comp.i_on_j$time, outHW.comp.i_on_j$N3, col="yellow")
+lines(outHW.comp.i_on_j$time, outHW.comp.i_on_j$N3, col="orange")
 lines(outHW.comp.i_on_j$time, outHW.comp.i_on_j$N4, col="darkblue")
 lines(outHW.comp.i_on_j$time, outHW.comp.i_on_j$N5, col="purple")
 lines(outHW.comp.i_on_j$time, outHW.comp.i_on_j$N6, col="lightblue")
 
 
-#plot resource densities over time
+####3.2 resource densities between t=10000 and t=10100 ####
 plot(outHW.comp.i_on_j$time, outHW.comp.i_on_j$R1, type="l", col="orange",
      xlab="time (days)", ylab="resource content", xlim =c(10000, 10100), ylim = c(0,1))
 lines(outHW.comp.i_on_j$time, outHW.comp.i_on_j$R2, col="cyan")
 lines(outHW.comp.i_on_j$time, outHW.comp.i_on_j$R3, col="violet")
 
 
-#plot limit cycles of all species on Resource 3
-par(mfrow=c(2,2))
+
+####3.3 Limit cycles of species 1-6 on Resource 3####
+par(mfrow=c(3,2))
 plot(outHW.comp.i_on_j$R3, outHW.comp.i_on_j$N1, type="l", col="red",
      xlab="Resource 3", ylab="abundance spec 1",
      cex.lab=cex)
 plot(outHW.comp.i_on_j$R3, outHW.comp.i_on_j$N2, type="l", col="darkgreen",
      xlab="Resource 3", ylab="abundance spec 2",
      cex.lab=cex)
+plot(outHW.comp.i_on_j$R3, outHW.comp.i_on_j$N3, type="l", col="orange",
+     xlab="Resource 3", ylab="abundance spec 3",
+     cex.lab=cex)
 plot(outHW.comp.i_on_j$R3, outHW.comp.i_on_j$N4, type="l", col="darkblue",
      xlab="Resource 3", ylab="abundance spec 4",
+     cex.lab=cex)
+plot(outHW.comp.i_on_j$R3, outHW.comp.i_on_j$N4, type="l", col="purple",
+     xlab="Resource 3", ylab="abundance spec 5",
      cex.lab=cex)
 plot(outHW.comp.i_on_j$R3, outHW.comp.i_on_j$N6, type="l", col="lightblue",
      xlab="Resource 3", ylab="abundance spec 6",
      cex.lab=cex)
 
 
-lines(outHW.comp.i_on_j$R3, outHW.comp.i_on_j$N2, col="darkgreen")
-lines(outHW.comp.i_on_j$R3, outHW.comp.i_on_j$N3, col="yellow")
+####3.4 Limit cycles of species 4,5,6 on Resource 2####
+par(mfrow=c(1,1))
 
-plot(outHW.comp.i_on_j$R3, outHW.comp.i_on_j$N5, type="l", col="darkblue",
-     xlab="Resource 2", ylab="Species abundance", ylim = c(0,0.2), xlim = c(0,2))
+plot(outHW.comp.i_on_j$R2, outHW.comp.i_on_j$N5, type="l", col="darkblue",
+     xlab="Resource 2", ylab="Species abundance", ylim = c(0,0.2), xlim = c(0,0.75))
 #lines(outHW.comp.i_on_j$R3, outHW.comp.i_on_j$N4, col="darkblue")
-lines(outHW.comp.i_on_j$R3, outHW.comp.i_on_j$N4, col="purple")
-lines(outHW.comp.i_on_j$R3, outHW.comp.i_on_j$N6, col="lightblue")
+lines(outHW.comp.i_on_j$R2, outHW.comp.i_on_j$N4, col="purple")
+lines(outHW.comp.i_on_j$R2, outHW.comp.i_on_j$N6, col="lightblue")
 
